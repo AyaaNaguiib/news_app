@@ -7,15 +7,14 @@ class CategoryDetailsViewModel extends ChangeNotifier {
 
   List<Source>? sources;
 
-  String? errorMessage; // ??
+  String? errorMessage;
   bool isLoading = false;
 
   void getSourcesByCategoryId(String categoryId) async {
     try {
       isLoading = true;
       notifyListeners();
-      var response = await ApiManager.getSources(
-          categoryId); // get data form backend server
+      var response = await ApiManager.getSources(categoryId);
 
       isLoading = false;
       if (response.status == 'ok') {
